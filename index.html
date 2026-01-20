@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Coquinho 💖</title>
+<style>
+body{
+  margin:0; font-family: Arial, sans-serif; background:#000; color:#fff; text-align:center;
+}
+#login, #conteudo {display:none;}
+input{padding:10px; font-size:16px;}
+button{padding:10px 20px; font-size:16px; cursor:pointer;}
+img{max-width:90%; margin:15px 0; border-radius:15px; animation: fade 2s;}
+@keyframes fade{from{opacity:0; transform:scale(0.8)} to{opacity:1; transform:scale(1)}}
+.hearts{
+  position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none;
+}
+.heart{
+  position:absolute; color:red; animation: subir 5s linear infinite;
+}
+@keyframes subir{
+  from{bottom:0; opacity:1}
+  to{bottom:100%; opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+  <h1>🔐 Área secreta</h1>
+  <p>Digite a senha do nosso namoro</p>
+  <input type="password" id="senha">
+  <br><br>
+  <button onclick="entrar()">Entrar 💖</button>
+</div>
+
+<div id="conteudo">
+  <h1>Feliz dia 27, meu amor 💕</h1>
+  <p>“Amor jovem é rir sem motivo, amar sem medo e escolher todos os dias.”</p>
+
+  <img src="foto1.jpg">
+  <img src="foto2.jpg">
+  <img src="foto3.jpg">
+
+  <audio autoplay loop>
+    <source src="los-retros-amtrak.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="hearts" id="hearts"></div>
+</div>
+
+<script>
+document.getElementById("login").style.display="block";
+
+function entrar(){
+  if(document.getElementById("senha").value === "27022025"){
+    document.getElementById("login").style.display="none";
+    document.getElementById("conteudo").style.display="block";
+    setInterval(criarCoracao, 500);
+  } else {
+    alert("Senha errada 😢");
+  }
+}
+
+function criarCoracao(){
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random()*100 + "%";
+  document.getElementById("hearts").appendChild(heart);
+  setTimeout(()=>heart.remove(),5000);
+}
+</script>
+
+</body>
+</html>
